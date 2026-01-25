@@ -71,16 +71,16 @@ body {
   left: 0;
   width: 100%;
   z-index: 60;
-  background: rgba(21, 26, 33, 0.95);
+  background: rgba(13, 16, 20, 0.95);
   backdrop-filter: blur(12px);
   color: var(--text);
   display: grid;
-  grid-template-columns: 320px 1fr 120px;
+  grid-template-columns: 1fr minmax(300px, 600px) 1fr;
   align-items: center;
-  gap: 16px;
-  padding: 10px 24px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  padding: 0 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  height: 80px;
 }
 
 /* Mobile Menu Button - Hidden on Desktop */
@@ -107,51 +107,67 @@ body {
   letter-spacing: .3px;
   display: flex;
   align-items: center;
-  font-size: 1.1em;
+  font-size: 1.25em;
+  white-space: nowrap;
 }
 
 .brand .logo {
-  width: 42px;
-  height: 42px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
-  margin-right: 12px;
+  margin-right: 16px;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.brand:hover .logo {
+  transform: scale(1.1) rotate(-5deg);
 }
 
 .search {
   position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .search input {
   width: 100%;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
+  padding: 12px 20px;
+  padding-left: 48px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.08);
   outline: none;
-  background: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.04);
   color: var(--text);
+  font-size: 1em;
   transition: all 0.2s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 16px center;
+  background-size: 20px;
 }
 
 .search input:focus {
-  background: rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.08);
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
+  color: #fff;
 }
 
 .search-results {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 8px);
   left: 0;
   right: 0;
   background: #1a1f27;
   border: 1px solid #202733;
-  border-radius: 8px;
-  margin-top: 8px;
+  border-radius: 12px;
+  margin-top: 4px;
   max-height: 400px;
   overflow-y: auto;
   z-index: 100;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
   display: none;
 }
 
@@ -408,16 +424,101 @@ body {
 }
 
 .site-footer {
-  margin-top: 40px;
-  border-top: 1px solid #1f2530;
+  margin-top: 60px;
   background: #0d1014;
+  border-top: 1px solid #1f2530;
+  padding-top: 40px;
 }
 
-.site-footer .container {
-  padding: 20px;
+.footer-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+.footer-brand .brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: var(--text);
+  margin-bottom: 15px;
+}
+
+.footer-brand .brand-logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.brand-desc {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 0.95em;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  gap: 60px;
+  justify-content: flex-end;
+}
+
+.link-group h4 {
+  color: var(--text);
+  margin: 0 0 15px 0;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.link-group a {
+  display: block;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+  transition: color 0.2s;
+}
+
+.link-group a:hover {
+  color: var(--primary);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 20px 0;
+  background: rgba(0,0,0,0.2);
+}
+
+.footer-bottom p {
+  margin: 0;
   text-align: center;
+  color: var(--muted);
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .brand-desc {
+    margin: 0 auto;
+  }
+  
+  .footer-brand .brand-logo {
+    justify-content: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+    gap: 40px;
+  }
 }
 
 /* Sidebar Overlay */
@@ -474,8 +575,9 @@ body {
   }
   
   .search input {
-    padding: 8px 12px;
+    padding: 8px 12px 8px 40px;
     font-size: 14px;
+    background-position: 12px center;
   }
 
   .layout {
@@ -924,15 +1026,24 @@ body {
 
 .close-modal {
   color: var(--muted);
-  font-size: 28px;
-  font-weight: bold;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  line-height: 1;
-  transition: color 0.2s;
+  border-radius: 6px;
+  transition: all 0.2s;
 }
 
 .close-modal:hover {
-  color: var(--primary);
+  color: var(--text);
+  background: rgba(255,255,255,0.1);
+}
+
+.close-modal svg {
+  width: 20px;
+  height: 20px;
 }
 
 .modal-body {
@@ -947,6 +1058,7 @@ body {
   padding: 12px;
   margin-bottom: 12px;
   display: flex;
+  align-items: center;
   gap: 15px;
   border: 1px solid transparent;
   transition: all 0.2s;
@@ -959,9 +1071,18 @@ body {
 }
 
 .tip-icon {
-  font-size: 24px;
+  width: 24px;
+  height: 24px;
   min-width: 24px;
-  padding-top: 2px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tip-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .tip-text strong {
