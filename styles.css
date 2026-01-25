@@ -84,7 +84,7 @@ body {
 }
 
 /* Mobile Menu Button - Hidden on Desktop */
-.mobile-menu-btn {
+#mobileMenuBtn.mobile-menu-btn {
   display: none !important;
   background: transparent;
   border: none;
@@ -94,9 +94,11 @@ body {
   padding: 4px;
   border-radius: 4px;
   line-height: 1;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-.mobile-menu-btn:hover {
+#mobileMenuBtn.mobile-menu-btn:hover {
   background: rgba(255,255,255,0.1);
 }
 
@@ -447,7 +449,7 @@ body {
     gap: 12px;
   }
 
-  .mobile-menu-btn {
+  #mobileMenuBtn.mobile-menu-btn {
     display: block !important;
   }
 
