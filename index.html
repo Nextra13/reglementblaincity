@@ -8,7 +8,10 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><img src="logo_BlainCity.png" alt="BlainCity FA" class="logo"> BlainCity FA | Règlement Serveur</div>
+    <button id="mobileMenuBtn" class="mobile-menu-btn">
+      <span class="hamburger-icon">☰</span>
+    </button>
+    <div class="brand"><img src="img/logo_BlainCity.png" alt="BlainCity FA" class="logo"> BlainCity FA | Règlement Serveur</div>
     <div class="search">
       <input type="text" id="searchInput" placeholder="Recherche..." autocomplete="off">
       <div id="searchResults" class="search-results"></div>
@@ -382,7 +385,7 @@
                 <p>Rouler dans la montagne avec une voiture de ville</p>
                 <p>Rouler sur les trottoirs et foncez sur les poteaux de manière volontaire</p>
                 <br>
-                <p>L'offroad est autorisé uniquement avec des véhicules adaptés (offroad). Toutefois, certains lieux restent strictement interdits, quel que soit le véhicule utilisé. Sont notamment interdits: <strong>les pentes trop raides, les sommets montagneux</strong> ou <strong>toute zone jugée incohérente</strong>. <a href="#" style="color: #60a5fa;">Une vidéo explicative 🔗</a> a été mise à disposition afin de clarifier ces restrictions.</p>
+                <p>L'offroad est autorisé uniquement avec des véhicules adaptés (offroad). Toutefois, certains lieux restent strictement interdits, quel que soit le véhicule utilisé. Sont notamment interdits: <strong>les pentes trop raides, les sommets montagneux</strong> ou <strong>toute zone jugée incohérente</strong>.
                 <p>Les motos tout-terrain ne sont pas concernées par cette règle.</p>
               </div>
             </div>
@@ -861,22 +864,22 @@
             <div class="info-grid">
               <div class="info-item">
                 <p><strong>Exclusivement réservé aux gangs et organisations officielles du serveur :</strong></p>
-                <img src="icon_gang.png" alt="Icône Gang" class="info-img">
+                <img src="img/icon_gang.png" alt="Icône Gang" class="info-img">
               </div>
               
               <div class="info-item">
                 <p><strong>Exclusivement réservé à un métier bien précis :</strong></p>
-                <img src="icon_job.png" alt="Icône Métier" class="info-img">
+                <img src="img/icon_job.png" alt="Icône Métier" class="info-img">
               </div>
               
               <div class="info-item">
                 <p><strong>Lié à l'inventaire du joueur qui le possède :</strong></p>
-                <img src="icon_owner.png" alt="Icône Propriétaire" class="info-img">
+                <img src="img/icon_owner.png" alt="Icône Propriétaire" class="info-img">
               </div>
               
               <div class="info-item">
                 <p><strong>Exclusivement réservé au VIP :</strong></p>
-                <img src="icon_vip.png" alt="Icône VIP" class="info-img">
+                <img src="img/icon_vip.png" alt="Icône VIP" class="info-img">
               </div>
             </div>
             
@@ -2095,12 +2098,44 @@
     </div>
   </footer>
 
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const menuItems = document.querySelectorAll('.menu-item');
       const sections = document.querySelectorAll('.content-section');
       const searchInput = document.getElementById('searchInput');
       const searchResults = document.getElementById('searchResults');
+
+      // Mobile Menu Logic
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const sidebar = document.querySelector('.sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+
+      if (menuBtn && sidebar && overlay) {
+        menuBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('active');
+          overlay.classList.toggle('active');
+          // Prevent body scroll when menu is open
+          document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', () => {
+          sidebar.classList.remove('active');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+
+        // Close sidebar when clicking a menu item
+        menuItems.forEach(item => {
+          item.addEventListener('click', () => {
+            if (window.innerWidth <= 960) {
+              sidebar.classList.remove('active');
+              overlay.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+        });
+      }
 
       // Search Logic
       if (searchInput && searchResults) {
