@@ -83,6 +83,23 @@ body {
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
+/* Mobile Menu Button - Hidden on Desktop */
+.mobile-menu-btn {
+  display: none !important;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
 .brand {
   font-weight: 700;
   letter-spacing: .3px;
@@ -401,23 +418,6 @@ body {
   text-align: center;
 }
 
-/* Mobile Menu Button */
-.mobile-menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--text);
-  font-size: 24px;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-  line-height: 1;
-}
-
-.mobile-menu-btn:hover {
-  background: rgba(255,255,255,0.1);
-}
-
 /* Sidebar Overlay */
 .sidebar-overlay {
   display: none;
@@ -448,7 +448,7 @@ body {
   }
 
   .mobile-menu-btn {
-    display: block;
+    display: block !important;
   }
 
   .brand {
