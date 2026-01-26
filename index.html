@@ -2113,7 +2113,7 @@
         </div>
         <div class="link-group">
           <h4>Liens Utiles</h4>
-          <a href="#" target="_blank">Discord</a>
+          <a href="https://discord.gg/NwrDa733qN" target="_blank">Discord</a>
           <a href="#" target="_blank">Top Serveur</a>
           <a href="#" target="_blank">Boutique</a>
         </div>
@@ -2360,6 +2360,26 @@
           
           // Reset scroll to top when manually switching sections
           window.scrollTo(0, 0);
+        });
+      });
+
+      // Handle footer navigation links
+      const footerLinks = document.querySelectorAll('.footer-links a[href^="#"]');
+      footerLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
+          
+          // Update URL hash
+          history.pushState(null, null, '#' + targetId);
+          
+          showSection(targetId);
+          
+          // Scroll to top with smooth behavior
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
         });
       });
 
