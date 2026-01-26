@@ -601,8 +601,11 @@ body {
     border-right: 1px solid #202733;
     box-shadow: 4px 0 15px rgba(0,0,0,0.5);
     padding-top: 20px;
+    padding-bottom: 80px; /* Ensure bottom items are reachable */
     display: flex;
     flex-direction: column;
+    overflow-y: auto; /* Enable scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   }
 
   .sidebar.active {
@@ -1157,3 +1160,4 @@ body {
   background: linear-gradient(135deg, rgba(243, 244, 246, 0.08) 0%, rgba(243, 244, 246, 0.02) 100%);
 }
 .white-zone h4 { color: #f3f4f6; }
+
