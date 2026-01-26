@@ -1058,6 +1058,7 @@ body {
   padding: 12px;
   margin-bottom: 12px;
   display: flex;
+  align-items: flex-start;
   gap: 15px;
   border: 1px solid transparent;
   transition: all 0.2s;
@@ -1088,3 +1089,71 @@ body {
   color: var(--muted);
   line-height: 1.4;
 }
+
+/* Zone Grid Styles */
+.zone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.zone-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.zone-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.zone-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.zone-icon {
+  font-size: 24px;
+}
+
+.zone-card h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.zone-card p {
+  margin: 0;
+  font-size: 0.95em;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Zone Specific Colors */
+.zone-card.red-zone {
+  border-left: 3px solid #ef4444;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(239, 68, 68, 0.02) 100%);
+}
+.red-zone h4 { color: #ef4444; }
+
+.zone-card.blue-zone {
+  border-left: 3px solid #3b82f6;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.02) 100%);
+}
+.blue-zone h4 { color: #3b82f6; }
+
+.zone-card.white-zone {
+  border-left: 3px solid #f3f4f6;
+  background: linear-gradient(135deg, rgba(243, 244, 246, 0.08) 0%, rgba(243, 244, 246, 0.02) 100%);
+}
+.white-zone h4 { color: #f3f4f6; }
