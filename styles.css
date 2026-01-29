@@ -430,6 +430,11 @@ body {
   margin-bottom: 15px;
 }
 
+/* Specific override for Convoi section to stack items */
+#illegal-convoi .graphic-rules-grid {
+  grid-template-columns: 1fr;
+}
+
 .rule-group {
   padding: 15px;
   border-radius: 8px;
